@@ -1,8 +1,11 @@
 <template>
-  <div class="tile flex-centered">
+  <div class="tile flex-centered" :class="{ checked: todo.checked }">
     <div class="tile-icon">
       <div>
-        <i class="icon icon-time"></i>
+        <i
+          class="icon"
+          :class="todo.checked ? 'icon-check' : 'icon-time'"
+        ></i>
       </div>
     </div>
     <dir class="tile-content">
@@ -10,7 +13,8 @@
     </dir>
     <div class="tile-action">
       <button @click="$emit('toggle', todo)" class="btn btn-link">
-        Concluido
+        <span v-if="todo.checked"> Desmarcar </span>
+        <span v-else>Concluido </span>
       </button>
       <button class="btn btn-link">
         <span class="text-error">Remover </span>
